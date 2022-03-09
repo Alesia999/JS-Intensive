@@ -55,8 +55,6 @@ function checkObjectValidity(object) {
 
 function checkNumberValidity(number) {
   return (
-    !isNaN(Number(number)) &&
-    isFinite(number) &&
-    typeof number === 'number'
+    !isNaN(Number(number)) && isFinite(number) && typeof number === 'number'
   );
 }
