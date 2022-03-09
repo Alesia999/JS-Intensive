@@ -1,5 +1,5 @@
-const NUM1 = prompt( 'Введите число' );
-const NUM2 = prompt( 'Введите второе число' );
+const NUM1 = prompt('Введите число');
+const NUM2 = prompt('Введите второе число');
 const NUMBERS_ARE_VALID =
   !isNaN(Number(NUM1)) &&
   Number(NUM1) !== Infinity &&
@@ -11,7 +11,7 @@ const NUMBERS_ARE_VALID =
 if (NUMBERS_ARE_VALID) {
   const RES = Number(NUM1).toString(Number(NUM2));
 
-  console.log( Number(RES) );
+  console.log(Number(RES));
 } else {
-  console.log( 'Некорректный ввод!' );
+  console.log('Некорректный ввод!');
 }
