@@ -5,7 +5,7 @@ function showResult(firstNumber, secondNumber) {
   console.log( `Ответ: ${RES1}, ${RES2}.` );
 }
 
-const NUM1 = prompt('Введите число');
+const NUM1 = prompt( 'Введите число' );
 const NUM1_IS_VALID = !isNaN(Number(NUM1)) && NUM1 !== '' && Number(NUM1) !== Infinity;
 
 if (!NUM1_IS_VALID) {
