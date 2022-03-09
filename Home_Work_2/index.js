@@ -22,7 +22,7 @@ function selectFromInterval(arr, num1, num2) {
       ? arr.filter((element) => element <= num1 && element >= num2)
       : arr.filter((element) => element <= num2 && element >= num1);
   } else {
-    throw new Error( 'Ошибка!' );
+    throw new Error('Ошибка!');
   }
 }
 
@@ -50,7 +50,7 @@ function checkObjectValidity(object) {
   if (INTERVAL_IS_VALID) {
     return true;
   } else {
-    throw new Error( 'Ошибка' );
+    throw new Error('Ошибка');
   }
 }
 
