@@ -12,17 +12,17 @@ function makeObjectDeepCopy(object) {
 }
 
 function selectFromInterval(arr, num1, num2) {
-  const ARRAY_IS_VALID =
+  const arrayIsValid =
     Array.isArray(arr) && arr.every((number) => checkNumberValidity(number));
-  const INTERVAL_IS_VALID =
+  const intervalIsValid =
     checkNumberValidity(num1) && checkNumberValidity(num2);
 
-  if (ARRAY_IS_VALID && INTERVAL_IS_VALID) {
+  if (arrayIsValid && intervalIsValid) {
     return num1 > num2
       ? arr.filter((element) => element <= num1 && element >= num2)
       : arr.filter((element) => element <= num2 && element >= num1);
   } else {
-    throw new Error('Ошибка!');
+    throw new Error( 'Ошибка!' );
   }
 }
 
@@ -44,20 +44,20 @@ const MY_ITERABLE = {
 
 function checkObjectValidity(object) {
   const { from, to } = object;
-  const INTERVAL_IS_VALID =
+  const intervalIsValid =
     from && to && checkNumberValidity(from) && checkNumberValidity(to);
 
-  if (INTERVAL_IS_VALID) {
+  if (intervalIsValid) {
     return true;
   } else {
-    throw new Error('Ошибка');
+    throw new Error( 'Ошибка' );
   }
 }
 
 function checkNumberValidity(number) {
   return (
     !isNaN(Number(number)) &&
-    Number(number) !== Infinity &&
+    isFinite(number) &&
     typeof number === 'number'
   );
 }
