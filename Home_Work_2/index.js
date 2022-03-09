@@ -34,7 +34,8 @@ const MY_ITERABLE = {
     return this;
   },
   next() {
-    if (this.current <= this.to && checkObjectValidity(MY_ITERABLE)) {
+    checkObjectValidity(MY_ITERABLE);
+    if (this.current <= this.to) {
       return { done: false, value: this.current++ };
     } else {
       return { done: true };
@@ -45,11 +46,9 @@ const MY_ITERABLE = {
 function checkObjectValidity(object) {
   const { from, to } = object;
   const intervalIsValid =
-    from && to && checkNumberValidity(from) && checkNumberValidity(to);
+    checkNumberValidity(from) && checkNumberValidity(to) && from <= to;
 
-  if (intervalIsValid) {
-    return true;
-  } else {
+  if (!intervalIsValid) {
     throw new Error('Ошибка');
   }
 }
