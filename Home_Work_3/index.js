@@ -10,7 +10,7 @@ Array.prototype.myFilter = function (callback, context) {
   return arr;
 };
 
-Array.prototype.myForeach = function (callback) {
+Array.prototype.myForEach = function (callback) {
   for (let i = 0; i < this.length; i++) {
     callback(this[i], i, this);
   }
