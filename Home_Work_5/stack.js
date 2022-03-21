@@ -1,6 +1,5 @@
 class Stack {
   #lastElement = null;
-  #container;
   #size;
 
   constructor(maxSize = 10) {
@@ -12,7 +11,6 @@ class Stack {
     }
 
     this.maxSize = maxSize;
-    this.#container = {};
     this.#size = 0;
   }
 
@@ -33,10 +31,10 @@ class Stack {
       throw new Error('Error');
     }
 
-    let size = this.#size;
+    let prevEl = this.#lastElement;
+    let data = { prevEl, element };
 
-    this.#container[size] = element;
-    this.setLastElement = element;
+    this.setLastElement = data;
     this.#size++;
   }
 
@@ -45,32 +43,39 @@ class Stack {
       throw new Error('Error');
     }
 
-    let size = --this.#size;
+    let node = this.#lastElement;
 
-    this.setLastElement = this.#container[size - 1];
-    let deletedData = this.#container[size];
+    this.#size -= 1;
+    this.#lastElement = node.prevEl;
 
-    delete this.#container[size];
-    return deletedData;
+    return node.element;
   }
 
   peek() {
     if (this.isEmpty()) {
       return null;
     } else {
-      return this.#lastElement;
+      return this.#lastElement.element;
     }
   }
 
   toArray() {
-    return [Object.values(this.#container)];
+    let newArr = [];
+    let data = this.#lastElement;
+
+    while (data) {
+      newArr.push(data.element);
+      data = data.prevEl;
+    }
+
+    return newArr.reverse();
   }
 
   static fromIterable(iterable) {
     if (Array.isArray(Array.from(iterable))) {
       const newStack = new Stack(Array.from(iterable).length);
 
-      Array.from(iterable).forEach(el => newStack.push(el));
+      Array.from(iterable).forEach((el) => newStack.push(el));
       return newStack;
     } else {
       throw new Error('Error');
