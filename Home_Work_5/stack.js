@@ -30,7 +30,6 @@ class Stack {
     if (this.isFull()) {
       throw new Error('Error');
     }
-
     let prevEl = this.#lastElement;
     let data = { prevEl, element };
 
@@ -42,7 +41,6 @@ class Stack {
     if (this.isEmpty()) {
       throw new Error('Error');
     }
-
     let node = this.#lastElement;
 
     this.#size -= 1;
@@ -76,6 +74,7 @@ class Stack {
       const newStack = new Stack(Array.from(iterable).length);
 
       Array.from(iterable).forEach((el) => newStack.push(el));
+      
       return newStack;
     } else {
       throw new Error('Error');
