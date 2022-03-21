@@ -30,6 +30,7 @@ class Stack {
     if (this.isFull()) {
       throw new Error('Error');
     }
+
     let prevEl = this.#lastElement;
     let data = { prevEl, element };
 
@@ -41,6 +42,7 @@ class Stack {
     if (this.isEmpty()) {
       throw new Error('Error');
     }
+
     let node = this.#lastElement;
 
     this.#size -= 1;
@@ -52,9 +54,9 @@ class Stack {
   peek() {
     if (this.isEmpty()) {
       return null;
-    } else {
-      return this.#lastElement.element;
     }
+
+    return this.#lastElement.element;
   }
 
   toArray() {
@@ -70,14 +72,14 @@ class Stack {
   }
 
   static fromIterable(iterable) {
-    if (Array.isArray(Array.from(iterable))) {
-      const newStack = new Stack(Array.from(iterable).length);
-
-      Array.from(iterable).forEach((el) => newStack.push(el));
-      
-      return newStack;
-    } else {
+    if (typeof iterable[Symbol.iterator] !== 'function') {
       throw new Error('Error');
     }
+
+    const newArray = Array.from(iterable);
+    const newStack = new Stack(newArray.length);
+
+    newArray.forEach((el) => newStack.push(el));
+    return newStack;
   }
 }
