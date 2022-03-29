@@ -43,6 +43,7 @@ numbersEl.forEach((number) => {
     } else if (e.target.innerText === '.' && haveDot) {
       return;
     }
+
     displayInfo(e);
   });
 });
@@ -61,6 +62,7 @@ square.addEventListener('click', () => {
   if (!num1) return;
   haveDot = false;
   result = Math.sqrt(parseFloat(num1)).toFixed(3);
+
   if (isNaN(result)) {
     display.innerText = 'Error';
     num1 = '';
@@ -72,10 +74,12 @@ square.addEventListener('click', () => {
 
 equalEl.addEventListener('click', () => {
   if (!num1 || !num2) return;
+
   haveDot = false;
   calculate();
   lastOperation = '';
   num2 = '';
+
   if (!isFinite(result)) {
     display.innerText = 'Error';
     num1 = '';
